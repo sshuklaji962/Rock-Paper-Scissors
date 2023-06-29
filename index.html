@@ -12,11 +12,12 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="favicon.ico" />
+    <script src="https://kit.fontawesome.com/e5959a7ee6.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <audio id="clickSound" src="sounds\click-sound.mp3"></audio>
-    <audio id="happySound" src="sounds\happy2.mp3"></audio>
-    <audio id="sadSound" src="sounds\crying2.mp3"></audio>
+    <audio id="happySound" src="sounds\happy.mp3"></audio>
+    <audio id="sadSound" src="sounds\crying.mp3"></audio>
 
     <header class="header"><h1 class="title">ROCK PAPER SCISSORS</h1></header> 
     <main>
@@ -54,15 +55,26 @@
      </div>
 
       <button onclick= "resetScore()" class="resetBtn">Restart Game</button>
-
-      <!--  Modal Implementation -->
-      <div class="modal" id="endgameModal">
-        <p class="modal-title" id="endgameMsg"></p>
-        <button onclick="resetScore();" class="resetBtn">Play again</button>
-      </div>
-      <div class="overlay" id="overlay"></div>
-
     </main>
+
+    <footer class="footer">
+      <p>
+        Copyright ©
+        <script>
+          document.write(new Date().getFullYear())
+        </script>
+        Satyam Shukla
+      </p>
+      <a href="https://github.com/sshuklaji962" target="_blank">
+        <i class="fab fa-github"></i></a>
+    </footer>
+
+    <!--  Modal Implementation -->
+    <div class="modal" id="endgameModal">
+      <p class="modal-title" id="endgameMsg"></p>
+      <button onclick="resetScore();" class="resetBtn">Play again</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
     <script src="app.js"></script>
   </body>
 </html>

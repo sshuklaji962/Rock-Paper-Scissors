@@ -5,6 +5,11 @@
   padding: 0;
   margin: 0;
 }
+html {
+  /* footer support */
+  position: relative;
+  min-height: 100%;
+}
 main {
   margin-top: 20px;
   text-align: center;
@@ -135,4 +140,29 @@ body{
 
 .overlay.active {
   display: block;
+}
+
+/* footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  color:  #ddd;
+  font-size: 20px;
+}
+
+.fa-github {
+  color:  #ddd;
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
 }

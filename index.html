@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+    <audio id="clickSound" src="sounds\click-sound.mp3"></audio>
+    <audio id="happySound" src="sounds\happy.mp3"></audio>
+    <audio id="sadSound" src="sounds\crying.mp3"></audio>
+
+    <header class="header"><h1 class="title">ROCK PAPER SCISSORS</h1></header> 
+    <main>
+      <div class="scorecard">
+        <h2 class="js-result">Choose your weapon</h2>
+        <h3 class="score js-moves">First to score 5 points wins the game.</h3>
+        <div class="score-container">
+          <div class="score-box">
+            <div class="sign" id="win-score">❔</div>
+            <p class="score">Wins</p>
+          </div>
+          <div class="score-box">
+            <div class="sign" id="lose-score">❔</div>
+            <p class="score">Losses</p>
+          </div>
+          <div class="score-box">
+            <div class="sign" id="tie-score">❔</div>
+            <p class="score">Ties</p>
+          </div>
+        </div>
+      </div>
+      
+     <div class="play-buttons">
+        <button onclick="playGame('rock');" class = "playBtn">
+          <div class="sign">✊</div>
+        </button>
+    
+        <button onclick="playGame('paper');" class = "playBtn">
+          <div class="sign">✋</div>
+        </button>
+    
+        <button onclick="playGame('scissors');" class = "playBtn">
+          <div class="sign">✌</div>
+        </button>
+     </div>
+
+      <button onclick= "resetScore()" class="resetBtn">Restart Game</button>
+
+      <!--  Modal Implementation -->
+      <div class="modal" id="endgameModal">
+        <p class="modal-title" id="endgameMsg"></p>
+        <button onclick="resetScore();" class="resetBtn">Play again</button>
+      </div>
+      <div class="overlay" id="overlay"></div>
+
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

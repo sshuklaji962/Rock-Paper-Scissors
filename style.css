@@ -33,6 +33,16 @@ main {
   border: none;
   cursor: pointer;
 }
+
+.playBtn:hover {
+  background-color: #4a4f57;
+}
+
+.playBtn:active {
+  background-color: #5b5f68;
+
+}
+
 .score-box {
   width: 170px;
 }

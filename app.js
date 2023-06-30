@@ -66,7 +66,7 @@ function playGame(playerMove) {
     document.querySelector('.js-result')
         .innerHTML = `${result}`;
     document.querySelector('.js-moves')
-        .innerHTML = `You picked ${playerMoveEmoji}, Computer picked ${computerMoveEmoji}`;
+        .innerHTML = `You picked <span class="winner-emoji">${playerMoveEmoji}</span>, Computer picked <span class="winner-emoji">${computerMoveEmoji}</span>`;
 
     if (score.wins >= 5 || score.losses >= 5) {
         openEndgameModal()
@@ -119,6 +119,13 @@ function resetScore() {
     document.querySelector('.js-moves')
         .innerHTML = `First to score 5 points wins the game.`;
 
+    if (isAutoPlaying) {
+        clearInterval(intervalId);
+        isAutoPlaying = false;
+        autoPlayBtn.innerHTML = 'Auto Play';
+        autoPlayBtn.classList.remove('active');
+    }
+    
     endgameModal.classList.remove('active');
     overlay.classList.remove('active');
         
@@ -161,24 +168,38 @@ let intervalId;
 const autoPlayBtn = document.querySelector('#autoPlayBtn');
 
 function autoPlay() {
-    let dots = '';
     if(!isAutoPlaying) {
         intervalId = setInterval(()=>{
             const playerMove = pickComputerMove();
             playGame(playerMove);
-            
-            dots += '.';
-            autoPlayBtn.innerHTML = 'Playing' + dots;
-            if (dots.length >= 3) {
-              dots = '';
-            }
+            clickEffect(playerMove);
         }, 700);
         isAutoPlaying = true;
         autoPlayBtn.classList.add('active');
+        autoPlayBtn.addEventListener('mouseover', handleHover);
+        autoPlayBtn.addEventListener('mouseout', handleHover);
     } else {
         clearInterval(intervalId);
         isAutoPlaying = false;
         autoPlayBtn.innerHTML = 'Auto Play';
         autoPlayBtn.classList.remove('active');
+    }
+}
+function clickEffect(playerMove) {
+    const moveId = `${playerMove}Btn`;
+    const button = document.getElementById(moveId);
+    button.classList.add('active');
+  
+    setTimeout(() => {
+        button.classList.remove('active');
+    }, 500); // Revert back to normal after 500 milliseconds
+}
+function handleHover(event) {
+    if (isAutoPlaying) {
+        if (event.type === 'mouseover') {
+            autoPlayBtn.innerHTML = 'Stop';
+        } else if (event.type === 'mouseout') {
+            autoPlayBtn.innerHTML = 'Playing...';
+        }
     }
 }

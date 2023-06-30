@@ -1,19 +1,18 @@
 // Store and update the score.
-// we will use an object to store values.
+// We will use an object to store values.
 const score = JSON.parse(localStorage.getItem('savedScore')) ?? 
                 {
                 wins : 0,
                 losses : 0, 
                 ties : 0
                 };
-// display score on front end.
+// Display score on front end.
 updateScoreElement();
 
 let playerMoveEmoji;
 let computerMoveEmoji;
 // Function for game.
 function playGame(playerMove) {
-
     if (score.wins >= 5 || score.losses >= 5) {
         openEndgameModal()
         return
@@ -74,9 +73,9 @@ function playGame(playerMove) {
         setFinalMessage()
         return
         }
-}
+    }
 
-//Update score element
+// Update score element
 function updateScoreElement() {
     document.querySelector('#win-score')
         .innerHTML = `${score.wins}`;
@@ -85,6 +84,7 @@ function updateScoreElement() {
     document.querySelector('#tie-score')
         .innerHTML = `${score.ties}`;
     }
+
 // Function for Computer Move
 function pickComputerMove() {
     const randomNumber = Math.floor(Math.random()*3);
@@ -125,7 +125,7 @@ function resetScore() {
     localStorage.removeItem('savedScore');
 }
 
-/* modal js */
+// Modal Feature
 const endgameModal = document.getElementById('endgameModal');
 const endgameMsg = document.getElementById('endgameMsg');
 const overlay = document.getElementById('overlay');
@@ -155,5 +155,30 @@ function setFinalMessage() {
     }
 }
 
+// Auto Play Feature
+let isAutoPlaying = false;
+let intervalId;
+const autoPlayBtn = document.querySelector('#autoPlayBtn');
 
-
+function autoPlay() {
+    let dots = '';
+    if(!isAutoPlaying) {
+        intervalId = setInterval(()=>{
+            const playerMove = pickComputerMove();
+            playGame(playerMove);
+            
+            dots += '.';
+            autoPlayBtn.innerHTML = 'Playing' + dots;
+            if (dots.length >= 3) {
+              dots = '';
+            }
+        }, 700);
+        isAutoPlaying = true;
+        autoPlayBtn.classList.add('active');
+    } else {
+        clearInterval(intervalId);
+        isAutoPlaying = false;
+        autoPlayBtn.innerHTML = 'Auto Play';
+        autoPlayBtn.classList.remove('active');
+    }
+}

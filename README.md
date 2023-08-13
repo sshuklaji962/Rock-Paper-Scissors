@@ -1,4 +1,4 @@
-# Rock-Paper-Scissors
+## Rock-Paper-Scissors
 This is a simple implementation of the classic Rock Paper Scissors game using HTML, CSS, and JavaScript. The project utilizes local storage and JSON data to save game scores, ensuring that the scores are not reset when the browser is refreshed. It also includes audio files for click events and when a winner is declared. The winner is displayed using a modal popup, which is created using HTML, CSS, and event listeners.
 
 Features
@@ -10,6 +10,8 @@ Features
 
 4. DOM Manipulation: The project employs different functions for DOM manipulation, allowing for dynamic updates to the game interface and scores based on user interactions.
 
-# To play the game, follow this link:
+5. Auto Play Feature: The game also includes an auto-play mode. When activated, the computer and player selections are made automatically at a predefined interval using the setInterval function. Players can toggle this feature on and off according to their preference.
+   
+## To play the game, follow this link:
 https://sshuklaji962.github.io/Rock-Paper-Scissors/
 

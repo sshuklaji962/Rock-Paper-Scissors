@@ -76,7 +76,7 @@ function playGame(playerMove) {
         return
         }
     }
-
+// New Change
 // Update score element
 function updateScoreElement() {
     document.querySelector('#win-score')

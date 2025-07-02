@@ -63,6 +63,7 @@ function playGame(playerMove) {
     localStorage.setItem('savedScore', JSON.stringify(score));
 
     // Dev Change
+    // First Change
 
     updateScoreElement();
     document.querySelector('.js-result')

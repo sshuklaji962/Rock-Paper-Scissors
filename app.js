@@ -55,6 +55,8 @@ function playGame(playerMove) {
         result = 'You win!';
         }
     }
+    // First Change
+
     // Update the score object based on match.
     if(result === 'You win!') score.wins += 1;
     else if(result === 'You lose!') score.losses += 1;
